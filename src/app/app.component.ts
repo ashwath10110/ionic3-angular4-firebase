@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+// import { Component } from '@angular/core';
+// import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Nav, Platform } from 'ionic-angular';
 
 import { HomePage } from '../pages/home/home';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { LoginPage } from '../pages/login/login';
 
 @Component({
   templateUrl: 'app.html'
@@ -12,15 +16,13 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class MyApp {
   rootPage: any;
 
-  constructor(platform: Platform, afAuth: AngularFireAuth, private splashScreen: SplashScreen,
+  constructor(platform: Platform, private afAuth: AngularFireAuth, private splashScreen: SplashScreen,
     private statusBar: StatusBar) {
-    const authObserver = afAuth.authState.subscribe(user => {
+    this.afAuth.authState.subscribe(user => {
       if (user) {
         this.rootPage = HomePage;
-        authObserver.unsubscribe();
       } else {
-        this.rootPage = 'LoginPage';
-        authObserver.unsubscribe();
+        this.rootPage = LoginPage;
       }
     });
 

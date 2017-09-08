@@ -8,7 +8,8 @@ import {
 } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth/auth';
-import { HomePage } from '../home/home';
+// import { HomePage } from '../home/home';
+import { LoginPage } from '../login/login';
 import { EmailValidator } from '../../validators/email';
 
 @IonicPage()
@@ -42,7 +43,7 @@ export class SignupPage {
 		} else {
 			this.authData.signupUser(this.signupForm.value.email, this.signupForm.value.password)
 				.then(() => {
-					this.nav.setRoot(HomePage);
+					this.nav.setRoot(LoginPage);
 				}, (error) => {
 					this.loading.dismiss().then(() => {
 						var errorMessage: string = error.message;
