@@ -17,7 +17,7 @@ import { EmailValidator } from '../../validators/email';
 
 @IonicPage()
 @Component({
-	selector: 'page-login',
+	selector: 'page-login1',
 	templateUrl: 'login.html'
 })
 export class LoginPage {
