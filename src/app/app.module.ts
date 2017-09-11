@@ -7,12 +7,14 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 // import { HomePage } from '../pages/home/home';
 // import { LoginPage } from '../pages/login/login';
-import { LoginPageModule } from '../pages/login/login.module';
-import { HomePageModule } from '../pages/home/home.module';
+import { LoginPageModule } from '../pages1/login/login.module';
+import { HomePageModule } from '../pages/_home/home.module';
 import { AuthProvider } from '../providers/auth/auth';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { SharedModule } from './shared.module';
+import { MODULES, PROVIDERS } from './app.imports';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDppuXk4pUUnmCmHSpEMEvpN4MmTshCw2g",
@@ -36,7 +38,8 @@ const firebaseConfig = {
     HomePageModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    SharedModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -45,6 +48,7 @@ const firebaseConfig = {
     // LoginPage
   ],
   providers: [
+    PROVIDERS,
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
@@ -52,3 +56,28 @@ const firebaseConfig = {
   ]
 })
 export class AppModule { }
+
+// import { SharedModule } from './shared.module';
+// import { NgModule, ErrorHandler } from '@angular/core';
+// import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+// import { MyApp } from './app.component';
+
+// import { MODULES, PROVIDERS } from './app.imports';
+
+// @NgModule({
+//   declarations: [
+//     // App Core
+//     MyApp,
+//   ],
+//   imports: [
+//     MODULES,
+//     IonicModule.forRoot(MyApp),
+//     SharedModule,
+//   ],
+//   bootstrap: [IonicApp],
+//   entryComponents: [
+//     MyApp,
+//   ],
+//   providers: [PROVIDERS, { provide: ErrorHandler, useClass: IonicErrorHandler }]
+// })
+// export class AppModule { }
